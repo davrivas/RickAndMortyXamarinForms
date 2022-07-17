@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RickAndMortyXamarinForms.Mobile.MainPage">
+
+    <StackLayout>
+        <Label Text="Rick and Morty"
+               HorizontalTextAlignment="Center"
+               FontSize="Large"
+               FontAttributes="Bold"
+               Margin="0,10,0,10"/>
+
+        <ActivityIndicator IsVisible="{Binding IsBusy}"
+                           IsRunning="true"
+                           Color="DodgerBlue" />
+
+        <StackLayout IsVisible="{Binding IsNotBusy}">
+            <ListView HasUnevenRows="True"
+                      ItemsSource="{Binding List}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal"
+                                         Padding="10">
+                                <Image Source="{Binding Image}"
+                                       WidthRequest="100"
+                                       Margin="0,0,10,0"
+                                       VerticalOptions="Start"/>
+
+                                <StackLayout Orientation="Vertical">
+                                    <Label Text="{Binding Name}"
+                                           FontAttributes="Bold"
+                                           FontSize="Medium" />
+                                    <Label>
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="Status: "
+                                                      FontAttributes="Bold" />
+                                                <Span Text="{Binding Status}"
+                                                      TextColor="{Binding StatusColor}"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label>
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="Species: "
+                                                      FontAttributes="Bold" />
+                                                <Span Text="{Binding Species}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label>
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="Gender: "
+                                                      FontAttributes="Bold" />
+                                                <Span Text="{Binding Gender}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label>
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="Origin: "
+                                                      FontAttributes="Bold" />
+                                                <Span Text="{Binding PlaceOfOrigin}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label>
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="Location: "
+                                                      FontAttributes="Bold" />
+                                                <Span Text="{Binding LocationName}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </StackLayout>
+
+</ContentPage>
